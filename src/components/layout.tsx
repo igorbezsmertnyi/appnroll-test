@@ -10,7 +10,6 @@ import React, { ReactChild } from "react"
 import styled, { ThemeProvider } from "styled-components"
 import { Normalize } from "styled-normalize"
 import theme from "../theming/theme"
-import Footer from "./base/footer/footer.component"
 import Header from "./base/header/header.component"
 
 const ContentWrapper = styled.div`
@@ -41,7 +40,6 @@ const Layout = ({ children }: { children: ReactChild | ReactChild[] }) => {
         <Header organization={data.github.organization} />
         <ContentWrapper>
           <main>{children}</main>
-          <Footer />
         </ContentWrapper>
       </>
     </ThemeProvider>

@@ -1,20 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Base|Footer headers 1`] = `
-<footer>
-  © 
-  2077
-  , Made by
-   
-  <a
-    href="https://www.appnroll.com/"
-    title="App'n'roll"
-  >
-    <test-file-stub />
-  </a>
-</footer>
-`;
-
 exports[`Storyshots Base|Header headers 1`] = `
 .c2 {
   min-width: 102px;
