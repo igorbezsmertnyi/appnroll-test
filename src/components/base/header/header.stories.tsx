@@ -11,10 +11,19 @@ const storyStyles = {
   overflow: "auto",
 }
 
+const mock = {
+  name: "App'n'roll",
+  websiteUrl: "http://appnroll.com",
+  avatarUrl: "https://avatars1.githubusercontent.com/u/2499845?v=4",
+  location: "Warsaw, Poland",
+  description:
+    "A venture building company. Having fun building scalable businesses.",
+}
+
 const Container = (storyFn: () => React.ReactNode) => (
   <div style={storyStyles}>{storyFn()}</div>
 )
 
 storiesOf("Base|Header", module)
   .addDecorator(Container)
-  .add("headers", () => <HeaderComponent siteTitle="Title" />)
+  .add("headers", () => <HeaderComponent organization={mock} />)

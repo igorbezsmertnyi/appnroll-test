@@ -16,14 +16,128 @@ exports[`Storyshots Base|Footer headers 1`] = `
 `;
 
 exports[`Storyshots Base|Header headers 1`] = `
+.c2 {
+  min-width: 102px;
+  width: 102px;
+  height: 102px;
+  padding: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: #0F1436;
+}
+
+.c3 {
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  object-fit: cover;
+}
+
+.c5 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  font-weight: 600;
+  font-family: 'Quicksand',sans-serif;
+  color: #0F1436;
+}
+
+.c6 {
+  font-size: 14px;
+  -webkit-letter-spacing: 0.16px;
+  -moz-letter-spacing: 0.16px;
+  -ms-letter-spacing: 0.16px;
+  letter-spacing: 0.16px;
+  line-height: 18px;
+  font-family: 'Quicksand',sans-serif;
+  color: #818FA3;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 14px;
+  -webkit-letter-spacing: 0.16px;
+  -moz-letter-spacing: 0.16px;
+  -ms-letter-spacing: 0.16px;
+  letter-spacing: 0.16px;
+  line-height: 18px;
+  font-family: 'Quicksand',sans-serif;
+  color: #243C56;
+}
+
+.c8 {
+  margin: 0 24px 0 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c8 svg {
+  width: 16px;
+  margin: 2px 8px 0 0;
+}
+
+.c8 a {
+  color: #243C56;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c8 a:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c4 {
+  margin: 0 0 0 21px;
+  padding: 12px 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
 .c0 {
-  background: hotpink;
   margin-bottom: 1.45rem;
+  padding: 71px 0 25px;
 }
 
 .c1 {
   margin: 0 auto;
-  max-width: 960px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 1155px;
   padding: 1.45rem 1.0875rem;
 }
 
@@ -44,9 +158,49 @@ exports[`Storyshots Base|Header headers 1`] = `
     <div
       className="c1"
     >
-      <h1>
-        Title
-      </h1>
+      <div
+        className="c2"
+      >
+        <img
+          className="c3"
+          data-testid="logoImage"
+          src="https://avatars1.githubusercontent.com/u/2499845?v=4"
+        />
+      </div>
+      <div
+        className="c4"
+      >
+        <h1
+          className="c5"
+        >
+          App'n'roll
+        </h1>
+        <p
+          className="c6"
+        >
+          A venture building company. Having fun building scalable businesses.
+        </p>
+        <div
+          className="c7"
+        >
+          <div
+            className="c8"
+          >
+            <test-file-stub />
+            Warsaw, Poland
+          </div>
+          <div
+            className="c8"
+          >
+            <test-file-stub />
+            <a
+              href="http://appnroll.com"
+            >
+              http://appnroll.com
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 </div>
