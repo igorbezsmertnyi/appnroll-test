@@ -21,10 +21,14 @@ const ContentWrapper = styled.div`
 
 const Layout = ({ children }: { children: ReactChild | ReactChild[] }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
+    query {
+      github {
+        organization(login: "Appnroll") {
+          name
+          websiteUrl
+          avatarUrl
+          location
+          description
         }
       }
     }
@@ -34,7 +38,7 @@ const Layout = ({ children }: { children: ReactChild | ReactChild[] }) => {
     <ThemeProvider theme={theme}>
       <>
         <Normalize />
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header organization={data.github.organization} />
         <ContentWrapper>
           <main>{children}</main>
           <Footer />
