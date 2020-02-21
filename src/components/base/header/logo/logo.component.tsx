@@ -27,7 +27,7 @@ interface Props {
 
 const Logo: AppFunctionComponent<Props> = ({ src }) => (
   <LogoWrapper>
-    <LogoImage src={src} />
+    <LogoImage data-testid="logoImage" src={src} />
   </LogoWrapper>
 )
 
