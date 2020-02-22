@@ -34,7 +34,7 @@ const RepositoryLink: AppFunctionComponent<Props> = ({ link }) => (
   <LinkWrapper>
     <ShareIcon />
 
-    <a href={link} target="_blank">
+    <a data-testid="repositoryLink" href={link} target="_blank">
       {reduceHostName(link)}
     </a>
   </LinkWrapper>

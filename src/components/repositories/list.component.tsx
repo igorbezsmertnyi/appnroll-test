@@ -15,7 +15,7 @@ interface Props {
 }
 
 const RepositoriesList: AppFunctionComponent<Props> = ({ repositories }) => (
-  <ListWrapper>
+  <ListWrapper data-testid="repositoriesList">
     {repositories.map(repository => (
       <RepositoriesItem key={repository.id} repository={repository} />
     ))}

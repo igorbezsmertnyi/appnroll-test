@@ -75,19 +75,22 @@ interface Props {
 
 const ItemFooter: AppFunctionComponent<Props> = ({ info }) => (
   <FooterWrapper>
-    <LanguageWrapper background={info.primaryLanguage.color}>
+    <LanguageWrapper
+      data-testid="repositoryLanguage"
+      background={info.primaryLanguage.color}
+    >
       {info.primaryLanguage.name}
     </LanguageWrapper>
 
     <Row>
       <IconsWrapper>
         <StarIcon />
-        <p>{info.stargazers.totalCount}</p>
+        <p data-testid="repositoryStars">{info.stargazers.totalCount}</p>
       </IconsWrapper>
 
       <IconsWrapper>
         <ForksIcon />
-        <p>{info.forkCount}</p>
+        <p data-testid="repositoryForks">{info.forkCount}</p>
       </IconsWrapper>
     </Row>
   </FooterWrapper>
