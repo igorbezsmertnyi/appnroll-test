@@ -14,7 +14,7 @@ import Header from "./base/header/header.component"
 
 const ContentWrapper = styled.div`
   margin: 0 auto;
-  max-width: 960px;
+  max-width: ${theme.layout.width};
   padding: 0 1.0875rem 1.45rem;
 `
 
