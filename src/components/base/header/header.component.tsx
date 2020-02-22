@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Logo from "./logo/logo.component"
 import Info from "./info/info.component"
+import theme from "../../../theming/theme"
 import AppFunctionComponent from "../../../types/app-function-component.interface"
 import IOrganization from "../../../types/organization-interface"
 
@@ -13,7 +14,7 @@ const HeaderRoot = styled.header`
 const ContentWrapper = styled.div`
   margin: 0 auto;
   display: flex;
-  max-width: 1155px;
+  max-width: ${theme.layout.width};
   padding: 1.45rem 1.0875rem;
 `
 
