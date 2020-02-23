@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import RepositoriesItem from "./item/item.component"
+import NoResults from "./no-results.component"
 import AppFunctionComponent from "../../types/app-function-component.interface"
 import IRepository from "../../types/repository-interface"
 
@@ -16,9 +17,13 @@ interface Props {
 
 const RepositoriesList: AppFunctionComponent<Props> = ({ repositories }) => (
   <ListWrapper data-testid="repositoriesList">
-    {repositories.map(repository => (
-      <RepositoriesItem key={repository.id} repository={repository} />
-    ))}
+    {repositories.length ? (
+      repositories.map(repository => (
+        <RepositoriesItem key={repository.id} repository={repository} />
+      ))
+    ) : (
+      <NoResults />
+    )}
   </ListWrapper>
 )
 
