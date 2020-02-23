@@ -4,7 +4,7 @@ const instance: AxiosInstance = axios.create({
   baseURL: "https://api.github.com/graphql",
   timeout: 1000,
   headers: {
-    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    Authorization: `Bearer ${process.env.GATSBY_GITHUB_TOKEN}`,
   },
 })
 
