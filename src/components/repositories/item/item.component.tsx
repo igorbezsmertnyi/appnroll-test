@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import FavoriteButton from "../../favorite/favorite-button.component"
 import ColoredLine from "./colored-line.components"
 import RepositoryTitle from "./title.component"
 import RepositoryLink from "./link.component"
@@ -31,6 +32,11 @@ const ContentWrapper = styled.div`
   padding: 40px 33px;
 `
 
+const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
 interface Props {
   repository: IRepository
 }
@@ -40,7 +46,10 @@ const RepositoriesItem: AppFunctionComponent<Props> = ({ repository }) => (
     <ColoredLine background={repository.primaryLanguage.color} />
 
     <ContentWrapper>
-      <RepositoryTitle>{repository.name}</RepositoryTitle>
+      <Row>
+        <RepositoryTitle>{repository.name}</RepositoryTitle>
+        <FavoriteButton id={repository.id} />
+      </Row>
 
       <RepositoryLink link={repository.url} />
 

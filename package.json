@@ -7,6 +7,7 @@
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@types/axios": "^0.14.0",
+    "@types/local-storage": "^1.4.0",
     "babel-plugin-remove-graphql-queries": "^2.7.23",
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.19.12",
@@ -24,6 +25,7 @@
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-source-graphql": "^2.1.33",
     "gatsby-transformer-sharp": "^2.3.14",
+    "local-storage": "^2.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
