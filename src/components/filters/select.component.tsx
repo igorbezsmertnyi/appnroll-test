@@ -61,11 +61,7 @@ const FilterSelect: AppFunctionComponent<Props> = ({
   handleChanage,
 }) => (
   <SelectWrapper>
-    <select
-      data-testid="filterSelect"
-      onBlur={handleChanage}
-      defaultValue={lang}
-    >
+    <select data-testid="filterSelect" onChange={handleChanage} value={lang}>
       <option value="all" aria-selected>
         All
       </option>

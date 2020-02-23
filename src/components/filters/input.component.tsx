@@ -51,7 +51,7 @@ const FilterInput: AppFunctionComponent<Props> = ({ q, handleInput }) => (
     <input
       data-testid="filterInput"
       onChange={handleInput}
-      defaultValue={q}
+      value={q}
       placeholder="Search"
     />
 
