@@ -1,5 +1,5 @@
 import { graphql } from "gatsby"
-import React, { Component, FormEvent } from "react"
+import React, { Component, ChangeEvent } from "react"
 import axios from "../helpers/axios"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -74,11 +74,11 @@ class IndexPage extends Component<Props> {
     }
   }
 
-  handleChangeQuery = (e: FormEvent<HTMLInputElement>) => {
+  handleChangeQuery = (e: ChangeEvent<HTMLInputElement>) => {
     this.setState({ q: e.target.value, fetching: true }, this.loadData)
   }
 
-  handleChangeFilter = (e: FormEvent<HTMLSelectElement>) => {
+  handleChangeFilter = (e: ChangeEvent<HTMLSelectElement>) => {
     this.setState({ lang: e.target.value, fetching: true }, this.loadData)
   }
 

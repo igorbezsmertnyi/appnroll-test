@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react"
+import React, { ChangeEvent } from "react"
 import styled from "styled-components"
 import FilterInput from "./input.component"
 import FilterSelect from "./select.component"
@@ -10,8 +10,8 @@ interface Props {
   q: string
   lang: string
   languages: string[]
-  handleInput(event: FormEvent<HTMLInputElement>): void
-  handleChanage(event: FormEvent<HTMLSelectElement>): void
+  handleInput(event: ChangeEvent<HTMLInputElement>): void
+  handleChanage(event: ChangeEvent<HTMLSelectElement>): void
   handleClear(): void
 }
 
@@ -34,7 +34,7 @@ const Filters: AppFunctionComponent<Props> = ({
   handleClear,
   languages,
 }) => (
-  <FiltersWrapper>
+  <FiltersWrapper data-testid="filters">
     <FilterInput q={q} handleInput={handleInput} />
 
     <FilterSelect

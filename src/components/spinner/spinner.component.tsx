@@ -29,7 +29,7 @@ const SpinnerWrapper = styled.div`
 `
 
 const Spinner = () => (
-  <Container>
+  <Container data-testid="spinner">
     <SpinnerWrapper />
   </Container>
 )

@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react"
+import React, { ChangeEvent } from "react"
 import styled from "styled-components"
 import {
   textColor,
@@ -52,7 +52,7 @@ const SelectArrow = styled.div`
 interface Props {
   lang: string
   languages: string[]
-  handleChanage(event: FormEvent<HTMLSelectElement>): void
+  handleChanage(event: ChangeEvent<HTMLSelectElement>): void
 }
 
 const FilterSelect: AppFunctionComponent<Props> = ({
@@ -61,7 +61,11 @@ const FilterSelect: AppFunctionComponent<Props> = ({
   handleChanage,
 }) => (
   <SelectWrapper>
-    <select onBlur={handleChanage} value={lang}>
+    <select
+      data-testid="filterSelect"
+      onBlur={handleChanage}
+      defaultValue={lang}
+    >
       <option value="all" aria-selected>
         All
       </option>

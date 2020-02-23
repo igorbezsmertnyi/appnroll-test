@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react"
+import React, { ChangeEvent } from "react"
 import styled from "styled-components"
 import SearchIcon from "../../images/icons/search.svg"
 import {
@@ -43,12 +43,17 @@ const ItemWrapper = styled.div`
 
 interface Props {
   q: string
-  handleInput(event: FormEvent<HTMLInputElement>): void
+  handleInput(event: ChangeEvent<HTMLInputElement>): void
 }
 
 const FilterInput: AppFunctionComponent<Props> = ({ q, handleInput }) => (
   <ItemWrapper>
-    <input onChange={handleInput} value={q} placeholder="Search" />
+    <input
+      data-testid="filterInput"
+      onChange={handleInput}
+      defaultValue={q}
+      placeholder="Search"
+    />
 
     <SearchIcon />
   </ItemWrapper>
