@@ -45,7 +45,7 @@ const IconsWrapper = styled.div`
   color: ${textColor("navyBlue")};
   font-family: ${fontFamily("quicksand")};
   font-size: 12px;
-  margin: 0 24px 0 0;
+  margin: 0 0 0 24px;
   display: flex;
   align-items: center;
 
