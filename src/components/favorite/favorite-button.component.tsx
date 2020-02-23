@@ -1,18 +1,20 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import ls from "local-storage"
+import { get, set } from "local-storage"
 import AddIcon from "../../images/icons/add.svg"
 import AddedIcon from "../../images/icons/added.svg"
 import { otherColor } from "../../theming/theme-getters"
 import AppFunctionComponent from "../../types/app-function-component.interface"
 
-const ButtonWrapper = styled.div`
+const ButtonWrapper = styled.button`
   width: 32px;
   height: 32px;
   margin: 0 0 0 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 0;
+  box-shadow: none;
   background-color: ${otherColor("coffee")};
   cursor: pointer;
 
@@ -26,12 +28,12 @@ interface Props {
 }
 
 const FavoriteButton: AppFunctionComponent<Props> = ({ id }) => {
-  let keys: string[] = ls.get("GH_FAVORITES") || []
+  let keys: string[] = get("GH_FAVORITES") || []
   let index: number = keys.indexOf(id)
   const [isFavorite, setState] = useState(index >= 0)
 
   const toggleFavorite = () => {
-    keys = ls.get("GH_FAVORITES") || []
+    keys = get("GH_FAVORITES") || []
     index = keys.indexOf(id)
 
     if (index >= 0) {
@@ -41,12 +43,16 @@ const FavoriteButton: AppFunctionComponent<Props> = ({ id }) => {
     }
 
     setState(!isFavorite)
-    ls.set("GH_FAVORITES", keys)
+    set("GH_FAVORITES", keys)
   }
 
   return (
-    <ButtonWrapper role="button" onClick={toggleFavorite}>
-      {isFavorite ? <AddedIcon /> : <AddIcon />}
+    <ButtonWrapper data-testid="favoriteButton" onClick={toggleFavorite}>
+      {isFavorite ? (
+        <AddedIcon data-testid="favoriteAdded" />
+      ) : (
+        <AddIcon data-testid="favoriteAdd" />
+      )}
     </ButtonWrapper>
   )
 }
