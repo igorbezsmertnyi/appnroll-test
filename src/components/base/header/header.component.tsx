@@ -4,7 +4,7 @@ import Logo from "./logo/logo.component"
 import Info from "./info/info.component"
 import theme from "../../../theming/theme"
 import AppFunctionComponent from "../../../types/app-function-component.interface"
-import IOrganization from "../../../types/organization-interface"
+import IOrganization from "../../../types/organization.interface"
 
 const HeaderRoot = styled.header`
   margin-bottom: 1.45rem;

@@ -1,9 +1,8 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import RepositoriesItem from "./item/item.component"
 import NoResults from "./no-results.component"
-import AppFunctionComponent from "../../types/app-function-component.interface"
-import IRepository from "../../types/repository-interface"
+import { RepositoriesContext } from "../../contexts/repositories.context"
 
 const ListWrapper = styled.div`
   display: flex;
@@ -11,20 +10,20 @@ const ListWrapper = styled.div`
   margin: 0 -15px;
 `
 
-interface Props {
-  repositories: IRepository[]
-}
+const RepositoriesList = () => {
+  const { list } = useContext(RepositoriesContext)
 
-const RepositoriesList: AppFunctionComponent<Props> = ({ repositories }) => (
-  <ListWrapper data-testid="repositoriesList">
-    {repositories.length ? (
-      repositories.map(repository => (
-        <RepositoriesItem key={repository.id} repository={repository} />
-      ))
-    ) : (
-      <NoResults />
-    )}
-  </ListWrapper>
-)
+  return (
+    <ListWrapper data-testid="repositoriesList">
+      {list.length ? (
+        list.map(repository => (
+          <RepositoriesItem key={repository.id} repository={repository} />
+        ))
+      ) : (
+        <NoResults />
+      )}
+    </ListWrapper>
+  )
+}
 
 export default RepositoriesList
