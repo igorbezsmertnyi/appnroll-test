@@ -4,7 +4,7 @@ import Name from "./name.component"
 import Description from "./description.component"
 import LocationAndSite from "./localtion-and-site.component"
 import AppFunctionComponent from "../../../../types/app-function-component.interface"
-import IOrganization from "../../../../types/organization-interface"
+import IOrganization from "../../../../types/organization.interface"
 
 const InfoWrapper = styled.div`
   margin: 0 0 0 21px;

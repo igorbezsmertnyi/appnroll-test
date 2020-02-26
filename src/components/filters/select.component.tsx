@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react"
+import React, { ChangeEvent, useContext } from "react"
 import styled from "styled-components"
 import {
   textColor,
@@ -7,7 +7,7 @@ import {
   otherColor,
   breakpoint,
 } from "../../theming/theme-getters"
-import AppFunctionComponent from "../../types/app-function-component.interface"
+import { FiltersContext } from "../../contexts/filter.context"
 
 const SelectWrapper = styled.div`
   position: relative;
@@ -49,31 +49,33 @@ const SelectArrow = styled.div`
   pointer-events: none;
 `
 
-interface Props {
-  lang: string
-  languages: string[]
-  handleChanage(event: ChangeEvent<HTMLSelectElement>): void
-}
+const FilterSelect = () => {
+  const { state, dispatch } = useContext(FiltersContext)
 
-const FilterSelect: AppFunctionComponent<Props> = ({
-  lang,
-  languages,
-  handleChanage,
-}) => (
-  <SelectWrapper>
-    <select data-testid="filterSelect" onChange={handleChanage} value={lang}>
-      <option value="all" aria-selected>
-        All
-      </option>
-      {languages.map(language => (
-        <option aria-selected key={language} value={language}>
-          {language}
+  const handleChanage = (e: ChangeEvent<HTMLSelectElement>) => {
+    dispatch({ type: "SET_LANG", payload: e.target.value })
+  }
+
+  return (
+    <SelectWrapper>
+      <select
+        data-testid="filterSelect"
+        onChange={handleChanage}
+        value={state.lang}
+      >
+        <option value="all" aria-selected>
+          All
         </option>
-      ))}
-    </select>
+        {state.languages.map(language => (
+          <option aria-selected key={language} value={language}>
+            {language}
+          </option>
+        ))}
+      </select>
 
-    <SelectArrow />
-  </SelectWrapper>
-)
+      <SelectArrow />
+    </SelectWrapper>
+  )
+}
 
 export default FilterSelect

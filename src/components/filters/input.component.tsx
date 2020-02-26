@@ -1,13 +1,13 @@
-import React, { ChangeEvent } from "react"
+import React, { ChangeEvent, useContext } from "react"
 import styled from "styled-components"
 import SearchIcon from "../../images/icons/search.svg"
+import { FiltersContext } from "../../contexts/filter.context"
 import {
   textColor,
   fontFamily,
   otherColor,
   breakpoint,
 } from "../../theming/theme-getters"
-import AppFunctionComponent from "../../types/app-function-component.interface"
 
 const ItemWrapper = styled.div`
   position: relative;
@@ -41,22 +41,25 @@ const ItemWrapper = styled.div`
   }
 `
 
-interface Props {
-  q: string
-  handleInput(event: ChangeEvent<HTMLInputElement>): void
+const FilterInput = () => {
+  const { state, dispatch } = useContext(FiltersContext)
+
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch({ type: "SET_QUERY", payload: e.target.value })
+  }
+
+  return (
+    <ItemWrapper>
+      <input
+        data-testid="filterInput"
+        onChange={handleInput}
+        value={state.q}
+        placeholder="Search"
+      />
+
+      <SearchIcon />
+    </ItemWrapper>
+  )
 }
-
-const FilterInput: AppFunctionComponent<Props> = ({ q, handleInput }) => (
-  <ItemWrapper>
-    <input
-      data-testid="filterInput"
-      onChange={handleInput}
-      value={q}
-      placeholder="Search"
-    />
-
-    <SearchIcon />
-  </ItemWrapper>
-)
 
 export default FilterInput

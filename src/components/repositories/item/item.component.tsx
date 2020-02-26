@@ -7,7 +7,7 @@ import RepositoryLink from "./link.component"
 import RepositoryDescription from "./description.component"
 import FooterWrapper from "./item-footer.component"
 import AppFunctionComponent from "../../../types/app-function-component.interface"
-import IRepository from "../../../types/repository-interface"
+import IRepository from "../../../types/repository.interface"
 import { breakpoint, otherColor } from "../../../theming/theme-getters"
 
 const ItemWrapper = styled.div`

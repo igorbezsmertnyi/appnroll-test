@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import AppFunctionComponent from "../../../types/app-function-component.interface"
-import IRepository from "../../../types/repository-interface"
+import IRepository from "../../../types/repository.interface"
 import StarIcon from "../../../images/icons/stars.svg"
 import ForksIcon from "../../../images/icons/issues.svg"
 import {

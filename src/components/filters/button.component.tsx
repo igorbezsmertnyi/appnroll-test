@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
+import { FiltersContext } from "../../contexts/filter.context"
 import { fontFamily, otherColor } from "../../theming/theme-getters"
-import AppFunctionComponent from "../../types/app-function-component.interface"
 
 const ButtonWrapper = styled.div`
   button {
@@ -19,14 +19,19 @@ const ButtonWrapper = styled.div`
     }
   }
 `
-interface Props {
-  handleClear(): void
-}
 
-const ClearButton: AppFunctionComponent<Props> = ({ handleClear }) => (
-  <ButtonWrapper onClick={handleClear}>
-    <button>Clear filters</button>
-  </ButtonWrapper>
-)
+const ClearButton = () => {
+  const { dispatch } = useContext(FiltersContext)
+
+  const handleClear = () => {
+    dispatch({ type: "CLEAR_FILTERS" })
+  }
+
+  return (
+    <ButtonWrapper onClick={handleClear}>
+      <button>Clear filters</button>
+    </ButtonWrapper>
+  )
+}
 
 export default ClearButton

@@ -4,11 +4,8 @@ import { screen } from "@testing-library/react"
 import { render } from "../../tests/test-render"
 import FilterInput from "./input.component"
 
-const q: string = ""
-const spy = jest.fn()
-
 beforeEach(() => {
-  render(<FilterInput q={q} handleInput={spy} />)
+  render(<FilterInput />)
 })
 
 describe("Filter input", () => {

@@ -1,12 +1,15 @@
 import { graphql } from "gatsby"
-import React, { Component, ChangeEvent } from "react"
-import axios from "../helpers/axios"
+import React, { useContext, useEffect } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Filters from "../components/filters/filters.component"
 import RepositoriesList from "../components/repositories/list.component"
 import Spinner from "../components/spinner/spinner.component"
-import IRepository from "../types/repository-interface"
+import IRepository from "../types/repository.interface"
+import AppFunctionComponent from "../types/app-function-component.interface"
+import { fetchRepositories } from "../actions/repositories"
+import { RepositoriesContext } from "../contexts/repositories.context"
+import { FiltersContext } from "../contexts/filter.context"
 
 interface Props {
   readonly data: {
@@ -18,113 +21,36 @@ interface Props {
   }
 }
 
-interface State {
-  q: string
-  lang: string
-  fetching: boolean
-  fetched: boolean
-  list: IRepository[]
-}
+const IndexPage: AppFunctionComponent<Props> = ({ data }) => {
+  const filtersContext = useContext(FiltersContext)
+  const repositoriesContext = useContext(RepositoriesContext)
 
-class IndexPage extends Component<Props> {
-  state: State = {
-    q: "",
-    lang: "all",
-    fetching: false,
-    fetched: false,
-    list: [],
-  }
+  useEffect(() => {
+    const languages = [
+      ...new Set(
+        data.github.search.nodes.map(node => node.primaryLanguage.name)
+      ),
+    ]
 
-  loadData = async () => {
-    const { q, lang } = this.state
+    repositoriesContext.dispatch({
+      type: "SET_LIST",
+      payload: data.github.search.nodes,
+    })
+    filtersContext.dispatch({ type: "SET_LANGUAGES", payload: languages })
+  }, [])
 
-    try {
-      const response = await axios.post("", {
-        query: `
-          query {
-            search(type: REPOSITORY, first: 100, query: "${q} org:Appnroll language:${lang}") {
-              nodes {
-                ... on Repository {
-                  id
-                  name
-                  description
-                  url
-                  forkCount
-                  stargazers {
-                    totalCount
-                  }
-                  primaryLanguage {
-                    color
-                    name
-                  }
-                }
-              }
-            }
-          }
-        `,
-      })
+  useEffect(() => {
+    fetchRepositories(filtersContext.state, repositoriesContext.dispatch)
+  }, [filtersContext.state])
 
-      await this.setState({
-        list: response.data.data.search.nodes,
-        fetching: false,
-        fetched: true,
-      })
-    } catch (err) {
-      console.error(err)
-    }
-  }
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <Filters />
 
-  handleChangeQuery = (e: ChangeEvent<HTMLInputElement>) => {
-    this.setState({ q: e.target.value, fetching: true }, this.loadData)
-  }
-
-  handleChangeFilter = (e: ChangeEvent<HTMLSelectElement>) => {
-    this.setState({ lang: e.target.value, fetching: true }, this.loadData)
-  }
-
-  handleClear = () => {
-    this.setState({ q: "", lang: "all", fetching: true }, this.loadData)
-  }
-
-  get languages() {
-    const { data } = this.props
-    const names = data.github.search.nodes.map(
-      node => node.primaryLanguage.name
-    )
-
-    return [...new Set<string>(names)].sort()
-  }
-
-  get repositories() {
-    const { list, fetched } = this.state
-    const { data } = this.props
-
-    return fetched ? list : data.github.search.nodes
-  }
-
-  render() {
-    const { q, lang, fetching } = this.state
-
-    return (
-      <Layout>
-        <SEO title="Home" />
-        <Filters
-          q={q}
-          lang={lang}
-          languages={this.languages}
-          handleInput={this.handleChangeQuery}
-          handleChanage={this.handleChangeFilter}
-          handleClear={this.handleClear}
-        />
-
-        {fetching ? (
-          <Spinner />
-        ) : (
-          <RepositoriesList repositories={this.repositories} />
-        )}
-      </Layout>
-    )
-  }
+      {repositoriesContext.isFetching ? <Spinner /> : <RepositoriesList />}
+    </Layout>
+  )
 }
 
 export default IndexPage
